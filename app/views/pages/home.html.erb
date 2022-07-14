@@ -1,2 +1,19 @@
+<h1><%= "Hello, #{current_user.email}" %></h1>
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+  <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% else%>
+  <%= link_to "Sign In", new_user_session_path %>
+  <%= link_to "Sign Up", new_user_registration_path %>
+<% end %>
+<p>Test the api with following creds</p>
+<div class="container">
+  <ul>
+    <li>
+      <%= link_to "Web Books", books_path %>
+    </li>
+    <li>API V1 Books</li>
+    <li>API V1 Android Books</li>
+  </ul>
+</div>
